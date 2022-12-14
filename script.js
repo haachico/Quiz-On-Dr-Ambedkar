@@ -14,7 +14,7 @@ const quizData = [
     b: "14th April, 1893",
     c: "11th April, 1890",
     d: "14th March, 1892",
-    correct: "14th April, 1891",
+    correct: "a",
   },
   {
     question: "What was the name of Dr. Ambedkar's father?",
@@ -22,7 +22,7 @@ const quizData = [
     b: "Sambha ji Sakpal",
     c: "Yashwant Sambha Ambedkar",
     d: "None of these",
-    correct: "Ramji Maloji Sakpal",
+    correct: "a",
   },
   {
     question: "When was Dr. Ambedkar given Bharat Ratna?",
@@ -30,7 +30,7 @@ const quizData = [
     b: "1990",
     c: "1985",
     d: "1979",
-    correct: "1990",
+    correct: "b",
   },
   {
     question: "What is the name of Dr. Ambedkar's memorial site?",
@@ -38,7 +38,60 @@ const quizData = [
     b: "Chaityabhoomi",
     c: "Buddhist bhumi",
     d: "Deekshabhoomi",
-    correct: "Chaityabhoomi",
+    correct: "b",
+  },
+  {
+    question:
+      "Dr. Ambedkar was the chairman of which committee constituted to form the Indian Constitution?",
+    a: "Preamble committee",
+    b: "Drafting committee",
+    c: "Flag committee",
+    d: "Union constiitution committee",
+    correct: "b",
+  },
+  {
+    question:
+      "Which of the following books has not been written by Dr. Ambedkar?",
+    a: "Thoughts on Pakistan",
+    b: "Annihilation of caste",
+    c: "The problem of Rupee",
+    d: "Gandhi, Nehru and Tagore",
+    correct: "d",
+  },
+  {
+    question:
+      ". Which of the following magazine was not launched by Dr. Ambedkar?",
+    a: "Mooknayak",
+    b: "Bahishkrit Bharat",
+    c: "Prabuddh Bharat",
+    d: "Saraswati",
+    correct: "d",
+  },
+  {
+    question:
+      "Which of the following political parties has not been formed by Dr. Ambedkar?",
+    a: "Republican Party Of India",
+    b: "Indian Labour Party",
+    c: "Scheduled Caste Federation",
+    d: "Socialist party of India",
+    correct: "d",
+  },
+  {
+    question:
+      "In which year did Dr Ambedkar convert to Buddhism along with his lakhs of followers?",
+    a: "1949",
+    b: "1951",
+    c: "1956",
+    d: "1948",
+    correct: "c",
+  },
+  {
+    question: "Which book is considered as the Magmum Opus of Dr Ambedkar?",
+    a: "THe Buddha And His Dhamma",
+    b: "Revolution And Counter-Revolution",
+    c: "Riddles in Hinduism",
+    d: "State And Minorities",
+    correct: "a",
   },
 ];
 
@@ -46,45 +99,73 @@ let score = 0;
 let currentQuiz = 0;
 
 function deselectAns() {
-  answerEls.forEach((answerEl) => {
-    answerEl.checked = false;
+  answerEls.forEach((answerEL) => {
+    answerEL.checked = false;
   });
 }
 
 function selectAns() {
-  let answer = undefined;
-  answerEls.forEach((answerEl) => {
-    if (answerEl.checked) {
-      answer = answerEl.id;
+  let answer;
+  answerEls.forEach((answerEL) => {
+    if (answerEL.checked) {
+      answer = answerEL.id;
     }
   });
   return answer;
 }
 
-function loadQuiz() {
-  deselectAns(); //Why is it called here???
-  const currentQuizData = quizData[currentQuiz];
+function randomUniqueNum(range, outputCount) {
+  let arr = [];
+  for (let i = 1; i <= range; i++) {
+    arr.push(i);
+  }
+
+  let result = [];
+
+  for (let i = 1; i <= outputCount; i++) {
+    const random = Math.floor(Math.random() * (range - i));
+    result.push(arr[random]);
+    arr[random] = arr[range - i];
+  }
+
+  return result;
+}
+
+function loadPage() {
+  deselectAns();
+  let random;
+  let randomuniq = randomUniqueNum(quizData.length, 5);
+  for (let i = 0; i < randomuniq.length; i++) {
+    random = randomuniq[i];
+  }
+  const currentQuizData = quizData[random];
   question.innerText = currentQuizData.question;
   opt1.innerText = currentQuizData.a;
   opt2.innerText = currentQuizData.b;
   opt3.innerText = currentQuizData.c;
   opt4.innerText = currentQuizData.d;
 }
-loadQuiz();
+
+loadPage();
+
 submitButton.addEventListener("click", function () {
+  // console.log(randomNumber());
   const answer = selectAns();
+
   if (answer) {
-    if (answer == quizData[currentQuiz].correct) {
+    if (answer === quizData[currentQuiz].correct) {
       score = score + 1;
     } else {
-      score = score;
+      score;
     }
     currentQuiz++;
-    console.log(currentQuiz);
-    if (currentQuiz < quizData.length) {
-      loadQuiz();
+
+    if (currentQuiz < 5) {
+      loadPage();
     } else {
-      output.innerText = `Your score is ${score}`;
+      output.innerHTML = `<h2>You answered correctly at ${score}/5 questions.</h2>
+      
+      <button onclick="location.reload()">Reload</button>`;
     }
   }
 });
