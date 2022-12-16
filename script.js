@@ -96,7 +96,8 @@ const quizData = [
 ];
 
 let score = 0;
-let currentQuiz = 0;
+// let currentQuiz = 0;
+let index = 0;
 
 function deselectAns() {
   answerEls.forEach((answerEL) => {
@@ -114,38 +115,31 @@ function selectAns() {
   return answer;
 }
 
-function randomUniqueNum(range, outputCount) {
-  let arr = [];
-  for (let i = 1; i <= range; i++) {
-    arr.push(i);
+function randomUniqueNum(range, count) {
+  // let randomNum;
+  let nums = new Set();
+  while (nums.size < count) {
+    nums.add(Math.floor(Math.random() * range + 1));
   }
-
-  let result = [];
-
-  for (let i = 1; i <= outputCount; i++) {
-    const random = Math.floor(Math.random() * (range - i));
-    result.push(arr[random]);
-    arr[random] = arr[range - i];
-  }
-
-  return result;
+  let arrOfNums = Array.from(nums);
+  return arrOfNums;
 }
+const randomQuestionIndex = randomUniqueNum(quizData.length - 1, 5);
+console.log(randomQuestionIndex);
 
 function loadPage() {
   deselectAns();
-  let random;
-  let randomuniq = randomUniqueNum(quizData.length, 5);
-  for (let i = 0; i < randomuniq.length; i++) {
-    random = randomuniq[i];
-  }
-  const currentQuizData = quizData[random];
+
+  const currentQuestionIndex = randomQuestionIndex[index];
+  console.log(currentQuestionIndex);
+  const currentQuizData = quizData[currentQuestionIndex];
+
   question.innerText = currentQuizData.question;
   opt1.innerText = currentQuizData.a;
   opt2.innerText = currentQuizData.b;
   opt3.innerText = currentQuizData.c;
   opt4.innerText = currentQuizData.d;
 }
-
 loadPage();
 
 submitButton.addEventListener("click", function () {
@@ -153,19 +147,19 @@ submitButton.addEventListener("click", function () {
   const answer = selectAns();
 
   if (answer) {
-    if (answer === quizData[currentQuiz].correct) {
+    let cuurentRandomIndex = randomQuestionIndex[index];
+    if (answer === quizData[cuurentRandomIndex].correct) {
       score = score + 1;
     } else {
       score;
     }
-    currentQuiz++;
-
-    if (currentQuiz < 5) {
+    index++;
+    if (index < 5) {
       loadPage();
     } else {
       output.innerHTML = `<h2>You answered correctly at ${score}/5 questions.</h2>
       
-      <button onclick="location.reload()">Reload</button>`;
+      <button onclick="location.reload()">Play Again</button>`;
     }
   }
 });
