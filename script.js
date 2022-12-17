@@ -6,6 +6,7 @@ const opt4 = document.querySelector(".opt-4");
 const answerEls = document.querySelectorAll(".answer");
 const submitButton = document.querySelector(".submit-btn");
 const output = document.querySelector(".output");
+const shareSection = document.querySelector(".share-section");
 
 const quizData = [
   {
@@ -252,6 +253,8 @@ submitButton.addEventListener("click", function () {
       output.innerHTML = `<h2>Jai Bhim! You answered correctly at ${score}/10 questions.</h2>
       
       <button onclick="location.reload()">Play Again</button>`;
+
+      shareSection.style.display = "grid";
     }
   }
 });

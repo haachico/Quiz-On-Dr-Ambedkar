@@ -3,7 +3,7 @@
 * {
   padding: 0;
   margin: 0;
-  box-sizing: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -89,6 +89,7 @@ button {
   border-radius: 5px;
   margin-top: 2rem;
   cursor: pointer;
+  margin-bottom: 3rem;
 }
 
 footer {
@@ -113,4 +114,28 @@ footer {
 
 .social-icon a {
   color: black;
+}
+
+.share-link {
+  justify-content: center;
+  border-radius: 50%;
+  background-color: white;
+  padding: 4px 10px;
+  font-size: 2rem;
+}
+
+.share-icons {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.share-text {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.share-section {
+  display: none;
 }
