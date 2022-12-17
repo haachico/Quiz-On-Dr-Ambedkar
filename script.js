@@ -79,7 +79,7 @@ const quizData = [
   },
   {
     question:
-      "In which year did Dr Ambedkar convert to Buddhism along with his lakhs of followers?",
+      "In which year did Dr Ambedkar embrace Buddhism along with his lakhs of followers?",
     a: "1949",
     b: "1951",
     c: "1956",
