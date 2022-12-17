@@ -93,6 +93,90 @@ const quizData = [
     d: "State And Minorities",
     correct: "a",
   },
+  {
+    question:
+      "Where was the 4th World Buddhist Conference held where Babasaheb delivered his infamous speech 'Buddha Or Karl Marx'?",
+    a: "Ceylon",
+    b: "Burma",
+    c: "Nepal",
+    d: "Japan",
+    correct: "c",
+  },
+  {
+    question: "Who were Babasaheb's 3 gurus?",
+    a: "Ranade, Gandhi & Jinnah",
+    b: "Buddha, Kabir & Jotiba Phule",
+    c: "Shivaji maharaj, Sant Tukaram, Chokhamela",
+    d: "Jesus,  King Ashoka & Guru Nanak",
+    correct: "b",
+  },
+  {
+    question:
+      "When was the historic speech 'What way Emancipation?' speech delivered by Dr Ambedkar?",
+    a: "31st May, 1936",
+    b: "13th October, 1935",
+    c: "14th April, 1939",
+    d: "6th June, 1934",
+    correct: "a",
+  },
+  {
+    question: "Between whom was the Poona Pact signed?",
+    a: "Dr Ambedkar and Nehru",
+    b: "Dr Ambedkar and Gandhi",
+    c: "Dr Ambedkar and Sardar patel",
+    d: "Dr Ambedkar and Rajendra Prasad",
+    correct: "b",
+  },
+  {
+    question:
+      "According to Dr. Ambedkar which Article is the most important article of Indian constitution?",
+    a: "Article 21",
+    b: "Article 24",
+    c: "Article 32",
+    d: "Article 49",
+    correct: "c",
+  },
+  {
+    question: "How many Doctoral degrees did Ambedkar have?",
+    a: "1",
+    b: "2",
+    c: "3",
+    d: "4",
+    correct: "d",
+  },
+  {
+    question: "Which form of government Dr Ambedkar preferred?",
+    a: "Constitutional Democracry",
+    b: "Monarchy",
+    c: "Artistocracy",
+    d: "None of the above",
+    correct: "a",
+  },
+  {
+    question: "In which college did Dr Ambedkar study in India?",
+    a: "Hindu College",
+    b: "Elphinstone College",
+    c: "Delhi College",
+    d: "Isabella College",
+    correct: "b",
+  },
+  {
+    question: "What portfolio was handled by Dr Ambedkar in Independent India",
+    a: "Home Ministry",
+    b: "Finance Ministry",
+    c: "Education Ministry",
+    d: "Law Ministry",
+    correct: "d",
+  },
+  {
+    question:
+      " Who provided scholarship to Dr. Ambedkar for his studies abroad?",
+    a: "Maharaja of Kolhapu",
+    b: "Nizam of Hyderabad",
+    c: "Travancore of Maharaja",
+    d: "Maharaja of Baroda",
+    correct: "d",
+  },
 ];
 
 let score = 0;
@@ -124,7 +208,7 @@ function randomUniqueNum(range, count) {
   let arrOfNums = Array.from(nums);
   return arrOfNums;
 }
-const randomQuestionIndex = randomUniqueNum(quizData.length - 1, 5);
+const randomQuestionIndex = randomUniqueNum(quizData.length - 1, 10);
 console.log(randomQuestionIndex);
 
 function loadPage() {
@@ -154,10 +238,10 @@ submitButton.addEventListener("click", function () {
       score;
     }
     index++;
-    if (index < 5) {
+    if (index < 10) {
       loadPage();
     } else {
-      output.innerHTML = `<h2>Jai Bhim! You answered correctly at ${score}/5 questions.</h2>
+      output.innerHTML = `<h2>Jai Bhim! You answered correctly at ${score}/10 questions.</h2>
       
       <button onclick="location.reload()">Play Again</button>`;
     }
