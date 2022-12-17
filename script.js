@@ -60,7 +60,7 @@ const quizData = [
   },
   {
     question:
-      ". Which of the following magazine was not launched by Dr. Ambedkar?",
+      "Which of the following magazine was not launched by Dr. Ambedkar?",
     a: "Mooknayak",
     b: "Bahishkrit Bharat",
     c: "Prabuddh Bharat",
@@ -157,7 +157,7 @@ submitButton.addEventListener("click", function () {
     if (index < 5) {
       loadPage();
     } else {
-      output.innerHTML = `<h2>You answered correctly at ${score}/5 questions.</h2>
+      output.innerHTML = `<h2>Jai Bhim! You answered correctly at ${score}/5 questions.</h2>
       
       <button onclick="location.reload()">Play Again</button>`;
     }
