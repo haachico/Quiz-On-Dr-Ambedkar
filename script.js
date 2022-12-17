@@ -177,6 +177,14 @@ const quizData = [
     d: "Maharaja of Baroda",
     correct: "d",
   },
+  {
+    question: "From whom did Dr Ambedkar derive his philosophy of life?",
+    a: "Karl Marx",
+    b: "Lord Buddha",
+    c: "John Dewey",
+    d: "Jotiba Phule",
+    correct: "b",
+  },
 ];
 
 let score = 0;
