@@ -142,3 +142,7 @@ footer {
 .share-section {
   display: none;
 }
+
+.hidden {
+  display: none;
+}

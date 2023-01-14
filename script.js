@@ -7,7 +7,7 @@ const answerEls = document.querySelectorAll(".answer");
 const submitButton = document.querySelector(".submit-btn");
 const output = document.querySelector(".output");
 const shareSection = document.querySelector(".share-section");
-
+const shareBtn = document.querySelector(".share-btn");
 const quizData = [
   {
     question: "When was Dr. Ambedkar born?",
@@ -252,9 +252,30 @@ submitButton.addEventListener("click", function () {
     } else {
       output.innerHTML = `<h2>Jai Bhim! You answered correctly at ${score}/10 questions.</h2>
       
-      <button onclick="location.reload()">Play Again</button>`;
+      <button onclick="location.reload()">Play Again</button>
+      <button onClick={share}></button>`;
+
+      shareBtn.style.display = "grid";
 
       shareSection.style.display = "grid";
     }
   }
 });
+
+function share() {
+  if (navigator.share !== undefined) {
+    navigator
+      .share({
+        title: "",
+        text: "",
+        url: "https://ambedkaritequiz.netlify.app/",
+      })
+      .carch(errorHandler);
+  }
+}
+
+function errorHandler() {
+  alert(`There was some error!`);
+}
+
+shareBtn.addEventListener("click", share);
