@@ -269,7 +269,7 @@ function share() {
         text: "",
         url: "https://ambedkaritequiz.netlify.app/",
       })
-      .carch(errorHandler);
+      .catch(errorHandler);
   }
 }
 
