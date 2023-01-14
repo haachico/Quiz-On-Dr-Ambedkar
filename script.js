@@ -252,7 +252,7 @@ submitButton.addEventListener("click", function () {
     } else {
       output.innerHTML = `<h2>Jai Bhim! You answered correctly at ${score}/10 questions.</h2>
       
-      <button onclick="location.reload()">Play Again</button>`;
+      <button onclick="location.reload()">Play Again!</button>`;
 
       shareBtn.style.display = "grid";
 
