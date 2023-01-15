@@ -266,7 +266,7 @@ function share() {
     navigator
       .share({
         title: `Dr-Ambedkar-Quiz!`,
-        text: `My score: ${score}/10`,
+        text: `My score was ${score}/10! You also try here:`,
         url: "https://ambedkaritequiz.netlify.app/",
       })
       .catch(errorHandler);
