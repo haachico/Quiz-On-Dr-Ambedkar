@@ -265,8 +265,8 @@ function share() {
   if (navigator.share !== undefined) {
     navigator
       .share({
-        title: ``,
-        text: `${output.innerHTML}`,
+        title: `Dr-Ambedkar-Quiz!`,
+        text: `My score: ${score}/10`,
         url: "https://ambedkaritequiz.netlify.app/",
       })
       .catch(errorHandler);
