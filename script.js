@@ -265,7 +265,7 @@ function share() {
   if (navigator.share !== undefined) {
     navigator
       .share({
-        title: "",
+        title: `${output.innerHTML}`,
         text: "",
         url: "https://ambedkaritequiz.netlify.app/",
       })
