@@ -146,3 +146,20 @@ footer {
 .hidden {
   display: none;
 }
+
+.head {
+  font-size: 4rem;
+  color: white;
+}
+
+.quizBody-img img {
+  height: 40rem;
+  border-radius: 5px;
+  border: black 0 0 0 0.1px;
+}
+
+.img-caption {
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+}

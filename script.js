@@ -1,3 +1,4 @@
+const quizBody = document.querySelector(".quiz-body");
 const question = document.querySelector(".question");
 const opt1 = document.querySelector(".opt-1");
 const opt2 = document.querySelector(".opt-2");
@@ -250,6 +251,16 @@ submitButton.addEventListener("click", function () {
     if (index < 10) {
       loadPage();
     } else {
+      // document.body.insertBefore(heading, output);
+      quizBody.style.visibility = "hidden";
+      quizBody.setAttribute("class", "quizBody-img");
+      quizBody.innerHTML = '<img src="Ambedkar.png"/>';
+      quizBody.style.visibility = "visible";
+      const caption = document.createElement("p");
+      caption.innerHTML = "In Photo - Dr B. R. Ambedkar";
+      caption.setAttribute("class", "img-caption");
+      quizBody.append(caption);
+
       output.innerHTML = `<h2>Jai Bhim! You answered correctly at ${score}/10 questions.</h2>
       
       <button onclick="location.reload()">Play Again!</button>`;
