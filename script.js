@@ -202,7 +202,6 @@ const quizData = [
 ];
 
 let score = 0;
-// let currentQuiz = 0;
 let index = 0;
 
 function deselectAns() {
@@ -222,7 +221,6 @@ function selectAns() {
 }
 
 function randomUniqueNum(range, count) {
-  // let randomNum;
   let nums = new Set();
   while (nums.size < count) {
     nums.add(Math.floor(Math.random() * range + 1));
@@ -234,13 +232,13 @@ const randomQuestionIndex = randomUniqueNum(quizData.length - 1, 10);
 console.log(randomQuestionIndex);
 
 function loadFirstPage() {
-  // firstSection.style.display = "grid";
+  firstSection.style.display = "block";
   quizBody.style.display = "none";
 }
 
 function loadQuizBody() {
   firstSection.style.display = "none";
-  quizBody.style.display = "grid";
+  quizBody.style.display = "block";
   deselectAns();
   console.log(`click`);
   const currentQuestionIndex = randomQuestionIndex[index];
@@ -253,34 +251,11 @@ function loadQuizBody() {
   opt4.innerText = currentQuizData.d;
 }
 
-// const letsSeeBtn = document.createElement("button");
-// letsSeeBtn.setAttribute("class", "letsee-btn");
-// letsSeeBtn.innerText = `Let's see!`;
-
-// function firstSection() {
-//   quizBody.style.visibility = "hidden";
-
-//   quizBody.innerHTML = '<img src="baba.png" />';
-//   quizBody.setAttribute("class", "quizBody-img");
-//   const firstSecHeading = document.createElement("h1");
-//   firstSecHeading.setAttribute("class", "firstSec-heading");
-//   firstSecHeading.innerHTML = "<h1>How well do you know Dr Ambedkar?</h1>";
-//   quizBody.prepend(firstSecHeading);
-//   const caption = document.createElement("p");
-//   caption.innerHTML = "In Photo - Dr B. R. Ambedkar";
-//   caption.setAttribute("class", "img-caption");
-//   quizBody.append(caption);
-
-//   quizBody.append(letsSeeBtn);
-//   quizBody.style.visibility = "visible";
-// }
 loadFirstPage();
 
 letSeeBtn.addEventListener("click", loadQuizBody);
-// firstSection();
 
 submitButton.addEventListener("click", function () {
-  // console.log(randomNumber());
   const answer = selectAns();
 
   if (answer) {
@@ -294,7 +269,6 @@ submitButton.addEventListener("click", function () {
     if (index < 10) {
       loadQuizBody();
     } else {
-      // document.body.insertBefore(heading, output);
       quizBody.style.visibility = "hidden";
       quizBody.setAttribute("class", "quizBody-img");
       quizBody.innerHTML = '<img src="Ambedkar.png"/>';
