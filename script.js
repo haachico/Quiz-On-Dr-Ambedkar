@@ -11,6 +11,7 @@ const shareSection = document.querySelector(".share-section");
 const shareBtn = document.querySelector(".share-btn");
 const firstSection = document.querySelector(".firstSection--container");
 const letSeeBtn = document.querySelector(".letSee--btn");
+const timeElement = document.querySelector(".timer");
 
 const quizData = [
   {
@@ -203,6 +204,39 @@ const quizData = [
 
 let score = 0;
 let index = 0;
+let time;
+const totalTime = 8;
+let sec = totalTime;
+
+function timer() {
+  timeElement.innerHTML = `Time left : ${sec}`;
+  sec--;
+  if (sec == 0) {
+    // sec = totalTime;
+    // clearInterval(time);
+    index++;
+    if (index < 10) {
+      loadQuizBody();
+    } else {
+      quizBody.style.visibility = "hidden";
+      quizBody.setAttribute("class", "quizBody-img");
+      quizBody.innerHTML = '<img src="Ambedkar.png"/>';
+      quizBody.style.visibility = "visible";
+      const caption = document.createElement("p");
+      caption.innerHTML = "In Photo - Dr B. R. Ambedkar";
+      caption.setAttribute("class", "img-caption");
+      quizBody.append(caption);
+
+      output.innerHTML = `<h2>Jai Bhim! You answered correctly at ${score}/10 questions.</h2>
+      
+      <button onclick="location.reload()">Play Again!</button>`;
+
+      shareBtn.style.display = "grid";
+
+      shareSection.style.display = "grid";
+    }
+  }
+}
 
 function deselectAns() {
   answerEls.forEach((answerEL) => {
@@ -249,13 +283,17 @@ function loadQuizBody() {
   opt2.innerText = currentQuizData.b;
   opt3.innerText = currentQuizData.c;
   opt4.innerText = currentQuizData.d;
+  sec = totalTime;
+  clearInterval(time);
+  timer();
+  time = setInterval(timer, 1000);
 }
 
 loadFirstPage();
 
 letSeeBtn.addEventListener("click", loadQuizBody);
 
-submitButton.addEventListener("click", function () {
+function clickHandler() {
   const answer = selectAns();
 
   if (answer) {
@@ -287,7 +325,9 @@ submitButton.addEventListener("click", function () {
       shareSection.style.display = "grid";
     }
   }
-});
+}
+
+submitButton.addEventListener("click", clickHandler);
 
 function share() {
   if (navigator.share !== undefined) {

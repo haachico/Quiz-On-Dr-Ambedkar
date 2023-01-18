@@ -206,3 +206,9 @@ footer {
   font-size: 1.2rem;
   color: white;
 }
+
+.timer {
+  font-size: 4rem;
+  color: white;
+  margin-bottom: 3rem;
+}
