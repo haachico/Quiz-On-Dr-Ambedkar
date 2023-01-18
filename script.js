@@ -9,6 +9,9 @@ const submitButton = document.querySelector(".submit-btn");
 const output = document.querySelector(".output");
 const shareSection = document.querySelector(".share-section");
 const shareBtn = document.querySelector(".share-btn");
+const firstSection = document.querySelector(".firstSection--container");
+const letSeeBtn = document.querySelector(".letSee--btn");
+
 const quizData = [
   {
     question: "When was Dr. Ambedkar born?",
@@ -187,6 +190,15 @@ const quizData = [
     d: "Jotiba Phule",
     correct: "b",
   },
+
+  {
+    question:
+      "At which place Babasaheb embraced Buddhism with his lakhs of followers?",
+    a: "Mumbai",
+    b: "Nagpur",
+    c: "Delhi",
+    d: "Baroda",
+  },
 ];
 
 let score = 0;
@@ -221,11 +233,17 @@ function randomUniqueNum(range, count) {
 const randomQuestionIndex = randomUniqueNum(quizData.length - 1, 10);
 console.log(randomQuestionIndex);
 
-function loadPage() {
-  deselectAns();
+function loadFirstPage() {
+  // firstSection.style.display = "grid";
+  quizBody.style.display = "none";
+}
 
+function loadQuizBody() {
+  firstSection.style.display = "none";
+  quizBody.style.display = "grid";
+  deselectAns();
+  console.log(`click`);
   const currentQuestionIndex = randomQuestionIndex[index];
-  console.log(currentQuestionIndex);
   const currentQuizData = quizData[currentQuestionIndex];
 
   question.innerText = currentQuizData.question;
@@ -234,7 +252,32 @@ function loadPage() {
   opt3.innerText = currentQuizData.c;
   opt4.innerText = currentQuizData.d;
 }
-loadPage();
+
+// const letsSeeBtn = document.createElement("button");
+// letsSeeBtn.setAttribute("class", "letsee-btn");
+// letsSeeBtn.innerText = `Let's see!`;
+
+// function firstSection() {
+//   quizBody.style.visibility = "hidden";
+
+//   quizBody.innerHTML = '<img src="baba.png" />';
+//   quizBody.setAttribute("class", "quizBody-img");
+//   const firstSecHeading = document.createElement("h1");
+//   firstSecHeading.setAttribute("class", "firstSec-heading");
+//   firstSecHeading.innerHTML = "<h1>How well do you know Dr Ambedkar?</h1>";
+//   quizBody.prepend(firstSecHeading);
+//   const caption = document.createElement("p");
+//   caption.innerHTML = "In Photo - Dr B. R. Ambedkar";
+//   caption.setAttribute("class", "img-caption");
+//   quizBody.append(caption);
+
+//   quizBody.append(letsSeeBtn);
+//   quizBody.style.visibility = "visible";
+// }
+loadFirstPage();
+
+letSeeBtn.addEventListener("click", loadQuizBody);
+// firstSection();
 
 submitButton.addEventListener("click", function () {
   // console.log(randomNumber());
@@ -249,7 +292,7 @@ submitButton.addEventListener("click", function () {
     }
     index++;
     if (index < 10) {
-      loadPage();
+      loadQuizBody();
     } else {
       // document.body.insertBefore(heading, output);
       quizBody.style.visibility = "hidden";
