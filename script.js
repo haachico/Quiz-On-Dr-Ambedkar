@@ -205,7 +205,7 @@ const quizData = [
 let score = 0;
 let index = 0;
 let time;
-const totalTime = 8;
+const totalTime = 10;
 let sec = totalTime;
 
 function timer() {
@@ -299,11 +299,11 @@ letSeeBtn.addEventListener("click", loadQuizBody);
 
 function remark(score) {
   if (score > 8) {
-    return `JaiBhim! Your score is ${score}! You do know a lot about the great personality that is Dr Ambedkar!`;
+    return `Kudos & JaiBhim! Your score is ${score}! You do know a lot about the great personality that is Dr Bhimrao Ramji Ambedkar!`;
   } else if (score >= 5 && score <= 8) {
-    return `Your score is ${score}! You do know quite a bit about the great persoanilty that is Dr Ambedkar!`;
+    return `JaiBhim! Your score is ${score}! You do seem to know quite a bit about the great persoanilty that is Dr Bhimrao Ramji Ambedkar!`;
   } else if (score >= 0 && score < 5) {
-    return `JaiBhim! Your score is ${score}! You don't seem to know much the great persoanilty that is Dr Ambedkar. Please read him and about him!`;
+    return `JaiBhim! Your score is ${score}! You don't seem to know much about the great persoanilty that is Dr Bhimrao Ramji Ambedkar. Please read him and about him!`;
   }
 }
 
