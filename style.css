@@ -154,7 +154,8 @@ footer {
 }
 
 .quizBody-img img {
-  height: 40rem;
+  height: 30%;
+  width: 60%;
   border-radius: 5px;
   border: black 0 0 0 0.1px;
 }
@@ -186,7 +187,7 @@ footer {
 }
 
 .firstSection--img {
-  height: 20%;
+  height: 30%;
   width: 60%;
   border-radius: 5px;
 }
