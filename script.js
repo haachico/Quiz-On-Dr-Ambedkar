@@ -211,7 +211,7 @@ let sec = totalTime;
 function timer() {
   timeElement.innerHTML = `Time left : ${sec}`;
   sec--;
-  if (sec == 0) {
+  if (sec === -2) {
     // sec = totalTime;
     // clearInterval(time);
     index++;
@@ -227,8 +227,12 @@ function timer() {
       caption.setAttribute("class", "img-caption");
       quizBody.append(caption);
 
-      output.innerHTML = `<h2>Jai Bhim! You answered correctly at ${score}/10 questions.</h2>
-      
+      // output.innerHTML = `<h2>Jai Bhim! You answered correctly at ${score}/10 questions.</h2>
+
+      // <button onclick="location.reload()">Play Again!</button>`;
+
+      output.innerHTML = `${remark(score)} 
+      <br/>
       <button onclick="location.reload()">Play Again!</button>`;
 
       shareBtn.style.display = "grid";
@@ -293,6 +297,16 @@ loadFirstPage();
 
 letSeeBtn.addEventListener("click", loadQuizBody);
 
+function remark(score) {
+  if (score > 8) {
+    return `JaiBhim! Your score is ${score}! You do know a lot about the great personality that is Dr Ambedkar!`;
+  } else if (score >= 5 && score <= 8) {
+    return `Your score is ${score}! You do know quite a bit about the great persoanilty that is Dr Ambedkar!`;
+  } else if (score >= 0 && score < 5) {
+    return `JaiBhim! Your score is ${score}! You don't seem to know much the great persoanilty that is Dr Ambedkar. Please read him and about him!`;
+  }
+}
+
 function clickHandler() {
   const answer = selectAns();
 
@@ -316,8 +330,12 @@ function clickHandler() {
       caption.setAttribute("class", "img-caption");
       quizBody.append(caption);
 
-      output.innerHTML = `<h2>Jai Bhim! You answered correctly at ${score}/10 questions.</h2>
-      
+      // output.innerHTML = `<h2>Jai Bhim! You answered correctly at ${score}/10 questions.</h2>
+
+      // <button onclick="location.reload()">Play Again!</button>`;
+
+      output.innerHTML = `${remark(score)} 
+      <br/>
       <button onclick="location.reload()">Play Again!</button>`;
 
       shareBtn.style.display = "grid";
