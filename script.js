@@ -299,11 +299,11 @@ letSeeBtn.addEventListener("click", loadQuizBody);
 
 function remark(score) {
   if (score > 8) {
-    return `Kudos & JaiBhim! Your score is ${score}! You do know a lot about the great personality that is Dr Bhimrao Ramji Ambedkar!`;
+    return `Kudos & JaiBhim! Your score is ${score}/10! You do know a lot about the great personality that is Dr Bhimrao Ramji Ambedkar!`;
   } else if (score >= 5 && score <= 8) {
-    return `JaiBhim! Your score is ${score}! You do seem to know quite a bit about the great persoanilty that is Dr Bhimrao Ramji Ambedkar!`;
+    return `JaiBhim! Your score is ${score}/10! You do seem to know quite a bit about the great persoanilty that is Dr Bhimrao Ramji Ambedkar!`;
   } else if (score >= 0 && score < 5) {
-    return `JaiBhim! Your score is ${score}! You don't seem to know much about the great persoanilty that is Dr Bhimrao Ramji Ambedkar. Please read him and about him!`;
+    return `JaiBhim! Your score is ${score}/10! You don't seem to know much about the great persoanilty that is Dr Bhimrao Ramji Ambedkar. Please read him and about him!`;
   }
 }
 
